@@ -419,6 +419,10 @@ open class WebSocket : NSObject, StreamDelegate, WebSocketClient, WSStreamDelega
     public var currentURL: URL { return request.url! }
 
     public var respondToPingWithPong: Bool = true
+    
+    public var writeQueueOperationCount: Int {
+        return writeQueue.operationCount
+    }
 
     // MARK: - Private
 
