@@ -419,10 +419,6 @@ open class WebSocket : NSObject, StreamDelegate, WebSocketClient, WSStreamDelega
     public var currentURL: URL { return request.url! }
 
     public var respondToPingWithPong: Bool = true
-    
-    public var writeQueueOperationCount: Int {
-        return writeQueue.operationCount
-    }
 
     // MARK: - Private
 
@@ -442,7 +438,7 @@ open class WebSocket : NSObject, StreamDelegate, WebSocketClient, WSStreamDelega
     private var isConnecting = false
     private let connectedMutex = NSLock()
     private var compressionState = CompressionState()
-    private var writeQueue = OperationQueue()
+    public var writeQueue = OperationQueue()
     private var readStack = [WSResponse]()
     private var inputQueue = [Data]()
     private var fragBuffer: Data?
